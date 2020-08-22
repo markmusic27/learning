@@ -73,6 +73,12 @@ class Color {
 const red = new Color();
 ```
 In this scenerio, the variable `red` has a type of `Color()`. This means that it has access to all of the properties and methods that `Color()`.
+
+---
+
+## Where to use Types?
+
+The answer is plain and simple. In TS, types are used everywhere. Whether you like it or not, every value has a given type associated with it. TS depends types to catch the simple but annoying errors in your code.
   
 
 
