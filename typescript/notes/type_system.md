@@ -26,3 +26,33 @@ The `Todo` type is an example of a type that is declared in an interface.
 
 In TS, a number is a number is a number. There is no such thing as `int` or `float`. **_A number can have decimals, no decimals, can be negative, etc._**
 
+__There are two groups of types in TS:__
+* Primative Types
+* Object Types
+
+__Primative Types__ include all of the basic types like numbers, booleans, strings, etc.
+
+__Object Types__ include all types that you creat like objects, functions, classes, and arrrays. The also include any other types that are built into the language itself.
+
+__Why do we even care?__ Types allow theTS compiler to catch errors and it also allows other developers to see understand what type a value has.
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
