@@ -20,5 +20,9 @@ __Common types:__
 * string - `"example"`
 * number - `14`
 * boolean - `false`
-* object - `{id: 1, completed: false, title: "Todo 1"}`
+* Todo - `{id: 1, completed: false, title: "Todo 1"}`
+
+The `Todo` type is an example of a type that is declared in an interface.
+
+In TS, a number is a number is a number. There is no such thing as `int` or `float`. **_A number can have decimals, no decimals, can be negative, etc._**
 
