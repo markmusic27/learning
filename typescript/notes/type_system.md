@@ -50,7 +50,7 @@ __Example 1:__
 const today = new Date();
 today.getDate();
 ```
-In this scenerio, the variable `today` hase a type of `Date()`. This means that it has access to all of the properties and methods that `Date()` has. You can see this when dot notation is used to `getDate()`.  
+In this scenerio, the variable `today` has a type of `Date()`. This means that it has access to all of the properties and methods that `Date()` has. You can see this when dot notation is used to `getDate()`.  
   
 __Example 2:__
 
@@ -61,7 +61,7 @@ const person = {
 
 person.age;
 ```
-In this scenerio, the variable `person` hase a type of `object`. This means that it has access to all of the properties and methods that the object has `(like age)`. You can see this when dot notation is used (`person.age;`).  
+In this scenerio, the variable `person` has a type of `object`. This means that it has access to all of the properties and methods that the object has `(like age)`. You can see this when dot notation is used (`person.age;`).  
   
 __Example 3:__
 
@@ -72,7 +72,7 @@ class Color {
 
 const red = new Color();
 ```
-In this scenerio, the variable `red` hase a type of `Color()`. This means that it has access to all of the properties and methods that `Color()`.
+In this scenerio, the variable `red` has a type of `Color()`. This means that it has access to all of the properties and methods that `Color()`.
   
 
 
