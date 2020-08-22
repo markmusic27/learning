@@ -42,13 +42,40 @@ __Why do we even care?__ Types allow the TS compiler to catch errors and it also
 
 Whenever you create an object and don't specify a type with an intefrace, __the type will default to be the whole object.__
 
-__Here are some examples of types in action:__
+_Here are some examples of types in action:_
+
+__Example 1:__
 
 ```ts
 const today = new Date();
 today.getDate();
 ```
-In this scenerio, the variable `today` hase a type of `Date()`. This means that it has access to all of the properties and methods that `Date()` has. You can see this when dot notation is used to `getDate()`.
+In this scenerio, the variable `today` hase a type of `Date()`. This means that it has access to all of the properties and methods that `Date()` has. You can see this when dot notation is used to `getDate()`.  
+  
+__Example 2:__
+
+```ts
+const person = {
+  age: 20,
+};
+
+person.age;
+```
+In this scenerio, the variable `person` hase a type of `object`. This means that it has access to all of the properties and methods that the object has `(like age)`. You can see this when dot notation is used (`person.age;`).  
+  
+__Example 3:__
+
+```ts
+class Color {
+
+};
+
+const red = new Color();
+```
+In this scenerio, the variable `red` hase a type of `Color()`. This means that it has access to all of the properties and methods that `Color()`.
+  
+
+
 
 
 
