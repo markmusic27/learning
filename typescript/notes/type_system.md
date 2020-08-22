@@ -34,12 +34,21 @@ __Primative Types__ include all of the basic types like numbers, booleans, strin
 
 __Object Types__ include all types that you creat like objects, functions, classes, and arrrays. The also include any other types that are built into the language itself.
 
-__Why do we even care?__ Types allow theTS compiler to catch errors and it also allows other developers to see understand what type a value has.
+__Why do we even care?__ Types allow the TS compiler to catch errors and it also allows other developers to see understand what type a value has.
 
 ---
 
+## More on Types
 
+Whenever you create an object and don't specify a type with an intefrace, __the type will default to be the whole object.__
 
+__Here are some examples of types in action:__
+
+```ts
+const today = new Date();
+today.getDate();
+```
+In this scenerio, the variable `today` hase a type of `Date()`. This means that it has access to all of the properties and methods that `Date()` has. You can see this when dot notation is used to `getDate()`.
 
 
 
