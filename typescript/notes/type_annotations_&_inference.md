@@ -21,6 +21,7 @@ To use _type annotation_ with `variables`, your code would look a little like th
 const variableName: number = 5;
 ```
 __CODE DECONSTRUCTION:__ To understand this code snippet, we have to divide it into 4 pieces:  
+
 1. `const` is where you declare the type of variable it is `[var, let, const]`.
 2. `variableName` is where you declare the name of the given variable.
 3. `: number` is where you declare the type with _type annotation_ . In this case, the value has a type of `number`.
@@ -31,16 +32,53 @@ _You can do the same thing with anything. **For example, built in objects:**_
 ```ts
 let date: Date = new Date();
 ```
-__With arrays, things get a little more complex. Here is how you would assign a type to an array:__
+</br>
+
+### __Type annotation with *arrays*__
 
 ```ts
 const nbaTeams: string[] = ["Sixers", "Rockets", "Lakers"];
 ```
 __CODE DECONSTRUCTION:__ The only thing that is different here is how you declare the type. To do this, we have to deconstruct the assignation in to 3 pieces:
+
 1. First, you have to see what are the types of the indexes in the array. In this case, the array has indexes that all have a type of `string`.
 2. Second, you would code in the type of the indexes after the `:`. In this case, you would write `: string`
 3. Third, you would write `[]` after the index. This indicates TS that your type is an array.  
 
+__NOTE:__ The `[]` dirrectly after `string` _DO NOT_ create an array. It _ONLY_ tells TS that the type is an array.  
+</br>
 
-__NOTE:__ The `[]` dirrectly after `string` _DOES NOT_ create an array. It _ONLY_ tells TS that the type is an array.
+### __Type annotation with *classes*__
 
+```ts
+class Dog {
+
+}
+
+let puppy: Dog = new Dog();
+```
+__CODE DECONSTRUCTION:__ To understand this snippet of code, we must break it down into 5 pieces:  
+
+1. Notice the `class` called Dog. All classes have a capital leter at the beginning.
+2. `let` is where you declare the type of variable it is `[var, let, const]`.
+3. `puppy` is the name of the variable and where you would declare the name of the variable.
+4. `: Dog` is declaring the type of the value. It is stating that the value has a type of the Dog class. _Notice how the D in `Dog` is capitalized and how there is no parenthesis after it._
+5. `= new Dog();` is declaring the value of the `puppy` variable. The `new` is a keyword allows you to create a new instance of the class. Then, `Dog()` refers to the class name.
+   
+### __Type annotation with *object literals*__
+
+```ts
+let objectName : { name: string; age: number; } = {
+  name : "Mark",
+  age : 15,
+}
+```
+
+__CODE DECONSTRUCTION:__ To understand this code snippet, we must break the code down into 5 pieces::
+
+1. `let` is where you declare the type of variable it is `[var, let, const]`.
+2. `objectName` is the name of the variable and where you would declare the name of the object.
+3. `{ name: string; age: number; }`
+	* The `{}` brackets are telling TS that value is of type object.
+	* `name: string; age: number;` is declaring the property name and the value type of _EVERY_ property in the object. For example, the property name is `name`. **_The `:` colon goes dirrectly next to it._** Then the property value type, in this case a `string`, is declared. **_Notice the `;` semicolon after every property value._**
+4. Finally, everything that goes after the `=` is the actual object.
