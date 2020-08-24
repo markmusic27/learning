@@ -112,3 +112,42 @@ const addOne: (num: number) => void = (num: number) => {
 ---
 
 ## Understanding Type Inference
+
+Type inference is TS infering what is the type of the value of a variable. **_TS relys on type inference when we (the developer) don't specify the type of the value of the variable._**
+
+Something that is key is that...
+
+```ts
+let name = 'Mark Music';
+```
+
+this line of code is actually two steps in one.
+
+1. `let` `name` is the first one and it's where you declare the variable. It is _everything to the left of the equals sign._
+2. `= 'Mark Music';` is the second part of the snippet and where you initialize the variable by giving it a value. It is _everything to the right of the equals sign._
+
+_TS depends on this code simplification to see (infer) what is the type of that variable's value._
+
+**NOTE: Type Inference _WILL NOT_ work if the initialization of the variable is done in a seperate line of code. Like this:**
+
+```ts
+// Wrong Way
+let name;
+
+name = 'Mark';
+
+//Right Way
+let name = 'Mark';
+```
+
+Notice how the initialization _of the wrong way_ is in a seperate line of code.
+
+### **When should we use one over the other?**
+
+There are _**three**_ main scenerios where we would use Type Annotations instead of just relying on Type Inference.
+
+| Condition           | Type Annotation                                                          | Type Inference |
+| ------------------- | ------------------------------------------------------------------------ | -------------- |
+| **When to use it?** | When a function returns the `any` type and we need to clarify the value. | Always!        |
+|                     | When we declare a variable on one line and initialize it later.          |                |
+|                     | When we want a variable to have a type that can't be infered.            |                |
