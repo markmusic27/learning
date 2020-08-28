@@ -151,3 +151,57 @@ There are _**three**_ main scenerios where we would use Type Annotations instead
 | **When to use it?** | When a function returns the `any` type and we need to clarify the value. | Always!        |
 |                     | When we declare a variable on one line and initialize it later.          |                |
 |                     | When we want a variable to have a type that can't be infered.            |                |
+
+</br>
+
+The `any` type will be described in detail in the next section.
+
+---
+
+## The `any` Type
+
+When Type Infernece tells you that the type of a value is any, _**that only means that TS has no idea what the actual type.**_
+
+For example:
+
+```ts
+let json = '{"x": 10, "y": 12, "z": 15}';
+
+let coordinates = JSON.parse(json);
+```
+
+`JSON.parse(json)` is just turning the string to an object. However, TS can't infer the type of the value of `coordinates`. Since it can't infer, it will just default to give it a type of any. This is because TS simply doesn't know what were going to get out of `JSON.parse(json)` because it depends on the string that we input it.
+
+_**REMEMBER:** TS is not going to try to read the string that we are passing in to see what are the types._
+
+**Key things to remember:**
+
+1. Any is a type, just like `string` or `number`.
+2. It just means that TS has no idea what the type is.
+3. Try to avoid the `any` type **AT ALL COSTS**. The any type defeats the whole purpose of TS and is like playing with fire.
+
+---
+
+## How to fix the `any` type
+
+Fixing the `any` type is actually pretty simple...
+
+**Just add _type annotation_.**
+
+However, there are some unique places where having variables that return the `any` type will be usefull.
+
+---
+
+## When Iference Doesn't Work
+
+There are times where you have to set different types to a variable. You definitly **DO NOT** want to use the `any` type.
+
+```ts
+let multipleTypeVariable: boolean | number = false;
+
+multipleTypeVariable = 13;
+
+console.log(multipleTypeVariable);
+```
+
+The `|` pipe key is like the or operator when using type annotations. It allows you to tell TS to accept the types that you imput within the type annotation. _For example: we are telling TS to accept booleans or number for `multipleTypeArray` in the example._
