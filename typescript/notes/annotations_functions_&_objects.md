@@ -111,7 +111,7 @@ const getGoal1 = ({goal1} : {goal1: string}) = {
 getGoal1(myGoals);
 ```
 
-__CODE DECONSTRUCTION: __ Here, we are first creating an object called `myGoals` which has three parameters: `goal1`, `goal2`, `goal3`. Then we are creating a function that destructures myGoals. 
+__CODE DECONSTRUCTION:__ Here, we are first creating an object called `myGoals` which has three parameters: `goal1`, `goal2`, `goal3`. Then we are creating a function that destructures myGoals. 
 * `{goal1}` is simply getting the parameter `goal1` from the `myGoals` object
 * `:` _the colon_ divides the actual desructuring with the TS Annotations.
 * `{goal1: string}` is simply telling TS that `goal1` has a type of string.
