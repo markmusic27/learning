@@ -1,6 +1,6 @@
 # 📸 Type Annotations With Functions & Objects
 
-## 🏏 More On Type Annotations Around Functions
+## More On Type Annotations Around Functions
 
 These notes with go into detail on how to use _Type Annotations_ with _functions_ is TS.
 
@@ -27,7 +27,7 @@ In this snippet, we have a function called divide which divides `num1` and `num2
 
 ---
 
-## 🛹 Inference Around Functions
+## Inference Around Functions
 
 _**Something important to remember is that TS is only worried about the types in your code, not the logic in your code.**_
 
