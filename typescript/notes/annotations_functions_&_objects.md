@@ -41,12 +41,12 @@ const predictGame = (ratingA: number, ratingB: number) => {
   equation = 1 / equation;
   equation = equation.toFixed(2);
   return Number(equation);
-}
+};
 ```
 
-In this snippet, TS knows that the function is returning a number because of `Number(equation);`. 
+In this snippet, TS knows that the function is returning a number because of `Number(equation);`.
 
-__However, it is essential to _never skip this step_ since it makes the code clear and there are instances where we need it.__
+**However, it is essential to _never skip this step_ since it makes the code clear and there are instances where we need it.**
 
 ---
 
@@ -65,7 +65,8 @@ const turnToNum (num: number): number {
   return Number(num);
 }
 ```
-As you can see in the code snippet, we are declaring what the function will return __immediately after the parenthesis.__ We do this in both scenarios. 
+
+As you can see in the code snippet, we are declaring what the function will return **immediately after the parenthesis.** We do this in both scenarios.
 
 ---
 
@@ -73,23 +74,25 @@ As you can see in the code snippet, we are declaring what the function will retu
 
 There are two types that are unique. These are `never` and `void`.
 
-__Void is used when a function doesn't return anything.__
+**Void is used when a function doesn't return anything.**
 
 ```ts
 const runMe = (message: string): void => {
-  console.log(message)
-}
+  console.log(message);
+};
 ```
+
 This function doesn't return anything, therefor, it has a type of void.
 
-__Never is used when a function never ends (aka when it throws out an error). *These are very rare.*__
+**Never is used when a function never ends (aka when it throws out an error). _These are very rare._**
 
 ```ts
 const throwError = (message: string): never => {
   throw new Error(message);
-} 
+};
 ```
-This code is going to leave out of the function early since it will throw an error if called. This means that we would use the type never. __Remember, the `never` type is very rare!__
+
+This code is going to leave out of the function early since it will throw an error if called. This means that we would use the type never. **Remember, the `never` type is very rare!**
 
 ---
 
@@ -111,13 +114,13 @@ const getGoal1 = ({goal1} : {goal1: string}) = {
 getGoal1(myGoals);
 ```
 
-__CODE DECONSTRUCTION:__ Here, we are first creating an object called `myGoals` which has three parameters: `goal1`, `goal2`, `goal3`. Then we are creating a function that destructures myGoals. 
-* `{goal1}` is simply getting the parameter `goal1` from the `myGoals` object
-* `:` _the colon_ divides the actual desructuring with the TS Annotations.
-* `{goal1: string}` is simply telling TS that `goal1` has a type of string.
-* `console.log(goal1)` is just printing `goal1` to the console.
+**CODE DECONSTRUCTION:** Here, we are first creating an object called `myGoals` which has three parameters: `goal1`, `goal2`, `goal3`. Then we are creating a function that destructures myGoals.
 
-Finally, we are calling `getGoal1()` and giving it an input of an object called `myGoals`. 
+- `{goal1}` is simply getting the parameter `goal1` from the `myGoals` object
+- `:` _the colon_ divides the actual desructuring with the TS Annotations.
+- `{goal1: string}` is simply telling TS that `goal1` has a type of string.
+- `console.log(goal1)` is just printing `goal1` to the console.
 
+Finally, we are calling `getGoal1()` and giving it an input of an object called `myGoals`.
 
-
+LES GOOOO
