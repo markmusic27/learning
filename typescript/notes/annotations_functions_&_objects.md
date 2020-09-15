@@ -102,14 +102,14 @@ In _ES15_, JS started to allow you to destructure objects to get exactly what yo
 
 ```ts
 const myGoals = {
-  goal1 : "Do La Ruta de Los Conquistadores race",
-  goal2 : "Create an app that gets featured in the App Store.",
-  goal3 : "Meet someone who you genuinely enjoy spending time with."
-}
+  goal1: 'Do La Ruta de Los Conquistadores race',
+  goal2: 'Create an app that gets featured in the App Store.',
+  goal3: 'Meet someone who you genuinely enjoy spending time with.',
+};
 
-const getGoal1 = ({goal1} : {goal1: string}) = {
-  console.log(goal1)
-}
+const getGoal1 = ({ goal1 }: { goal1: string }) => {
+  console.log(goal1);
+};
 
 getGoal1(myGoals);
 ```
@@ -123,4 +123,38 @@ getGoal1(myGoals);
 
 Finally, we are calling `getGoal1()` and giving it an input of an object called `myGoals`.
 
-LES GOOOO
+---
+
+## Type Annotations With Objects
+
+To use destructuring for a variable in TS and give it a type annotation, _you would do this:_
+
+```ts
+const database = {
+  mark: {
+    age: 15,
+    fav_color: 'blue',
+    sex: 'male',
+  },
+  filippo: {
+    age: 14,
+    fav_color: "green"
+    sex: "male"
+  },
+  dani: {
+    age: 15,
+    fav_color : "yellow",
+    sex: "female"
+  }
+};
+
+const { dani:  { age } }: { dani: { age: number }} = database;
+```
+
+**CODE DECONSTRUCTION:** Here, we are simply creating an object called `database`. Then we are deconstructing it with ES6 syntax.
+
+1.  `{ dani: { age } }` is just saying, destructure the object and get the property `age` in the `dani` object in the `database` object.
+
+2.  `: { dani: { age: number }}` is just giving `age` a type of `number`.
+
+3.  `= database;` is just telling TS that you are destructuring from the `database` object.
