@@ -204,4 +204,4 @@ multipleTypeVariable = 13;
 console.log(multipleTypeVariable);
 ```
 
-The `|` pipe key is like the or operator when using type annotations. It allows you to tell TS to accept the types that you imput within the type annotation. _For example: we are telling TS to accept booleans or number for `multipleTypeArray` in the example._
+The `|` pipe key is like the or operator when using type annotations. It allows you to tell TS to accept the types that you imput within the type annotation. _For example: we are telling TS to accept booleans or number for `multipleTypeArray` in the example_.
