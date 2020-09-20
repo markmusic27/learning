@@ -103,3 +103,78 @@ const printDetails = (mark: Person) => {
 2.  The `summary` property has a type of `summary():string;`
 
 Note how **we use the ES15 syntax** to **use functions in an object**. We can **do the same for interfaces.**
+
+---
+
+## More on Interfaces
+
+If an **interface has a single type** and we are **assigning that interface to an object with multiple types**, interfaces **will work while one of the types that the object has satisfies the interface.**
+
+```ts
+interface Car {
+  summary(): string;
+}
+
+const car = {
+  name: 'La Ferrari',
+  brand: 'Ferrari',
+  age: new Date(),
+  summary() {
+    return `
+    Name : ${this.name}
+    Brand : ${this.brand}
+    Age: ${this.age}
+    `;
+  },
+};
+```
+
+**CODE DECONSTRUCTION:** As you can see in the code snippet, the interface `Car` has only one type. However, since the object `car` does have a method called `summary` and it does return a string, the code works perfectly.
+
+---
+
+## Code Reuse with Interfaces
+
+One of the most important and powerful things about interfaces is **how they can be used by multiple objects.**
+
+Take this example:
+
+```ts
+interface Equation {
+  formula(): void;
+}
+
+const addNumbers = {
+  num1: 1,
+  num2: 10,
+  formula() {
+    return this.num1 - this.num2;
+  },
+};
+
+const mean = {
+  data: [1, 7, 3, 4, 5, 6, 2],
+  formula() {
+    const sortedData: number[] = this.data;
+    let sum = 0;
+    for (let i = 0; i < sortedData.length; i++) {
+      sum += sortedData[i];
+    }
+    return sum / sortedData.length;
+  },
+};
+
+const calculateEquation = (equation: Equation) => {
+  return equation.formula();
+};
+```
+
+**CODE DECONSTRUCTION:** In this code snippet, **we are simplifying the interface** `Equation` from an interface called `Add`. Since **`Equation` is compatible with any object that has a function called equation in it**, this **allows us to not have to write as much code.** Simpler functions also allow us to **reuse code by making it simpler.**
+
+---
+
+## General Plan with Interfaces
+
+<img src="images/interface_strategy.png" style="border-radius: 8px;">
+
+One of the most important things to understand with **interfaces is that they are best used as gatekeepers.** This is to follow the **Object Oriented Programming** methodology with **_reusable code_**.
