@@ -1,6 +1,7 @@
 import faker from 'faker';
+import { MarkerInput } from './Map';
 
-export class User {
+export class User implements MarkerInput {
   name: string;
   lastName: string;
 
@@ -16,5 +17,15 @@ export class User {
       lat: Number(faker.address.latitude()),
       lng: Number(faker.address.longitude()),
     };
+  }
+
+  returnInfo() {
+    return `
+    <div>
+    <h1>
+    Business Owner: ${this.name} ${this.lastName}
+    </h1>
+    </div>
+    `;
   }
 }

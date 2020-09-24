@@ -1,12 +1,3 @@
-export const map = new google.maps.Map(document.getElementById('map'), {
-  zoom: 8,
-  center: {
-    lat: -34.397,
-    lng: 150.644,
-  },
-  backgroundColor: '#48A9A6',
-});
-
 interface MapInputs {
   zoom: number;
   center: {
@@ -16,11 +7,12 @@ interface MapInputs {
   backgroundColor: string;
 }
 
-interface MarkerInput {
+export interface MarkerInput {
   location: {
     lat: number;
     lng: number;
   };
+  returnInfo(): string;
 }
 
 export class Map {
@@ -36,12 +28,19 @@ export class Map {
     });
   }
   addMarker(markerInput: MarkerInput) {
-    new google.maps.Marker({
+    const marker = new google.maps.Marker({
       map: this.newMap,
       position: {
         lat: markerInput.location.lat,
         lng: markerInput.location.lng,
       },
+    });
+
+    marker.addListener('click', () => {
+      const infoWindow = new google.maps.InfoWindow({
+        content: markerInput.returnInfo(),
+      });
+      infoWindow.open(this.newMap, marker);
     });
   }
 }

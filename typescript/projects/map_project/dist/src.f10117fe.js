@@ -100438,6 +100438,10 @@ function () {
     };
   }
 
+  User.prototype.returnInfo = function () {
+    return "\n    <div>\n    <h1>\n    Business Owner: " + this.name + " " + this.lastName + "\n    </h1>\n    </div>\n    ";
+  };
+
   return User;
 }();
 
@@ -100470,6 +100474,10 @@ function () {
     };
   }
 
+  Company.prototype.returnInfo = function () {
+    return "\n    <div>\n    <h1>" + this.name + ".</h1>\n    <h3>" + this.catchPhrase + "</h3>\n    </div>\n    ";
+  };
+
   return Company;
 }();
 
@@ -100480,15 +100488,7 @@ exports.Company = Company;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Map = exports.map = void 0;
-exports.map = new google.maps.Map(document.getElementById('map'), {
-  zoom: 8,
-  center: {
-    lat: -34.397,
-    lng: 150.644
-  },
-  backgroundColor: '#48A9A6'
-});
+exports.Map = void 0;
 
 var Map =
 /** @class */
@@ -100505,12 +100505,20 @@ function () {
   }
 
   Map.prototype.addMarker = function (markerInput) {
-    new google.maps.Marker({
+    var _this = this;
+
+    var marker = new google.maps.Marker({
       map: this.newMap,
       position: {
         lat: markerInput.location.lat,
         lng: markerInput.location.lng
       }
+    });
+    marker.addListener('click', function () {
+      var infoWindow = new google.maps.InfoWindow({
+        content: markerInput.returnInfo()
+      });
+      infoWindow.open(_this.newMap, marker);
     });
   };
 
@@ -100571,7 +100579,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64024" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58699" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
