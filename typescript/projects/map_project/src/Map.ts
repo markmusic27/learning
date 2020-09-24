@@ -16,7 +16,7 @@ export interface MarkerInput {
 }
 
 export class Map {
-  newMap: google.maps.Map;
+  private newMap: google.maps.Map;
   constructor(mapInputs: MapInputs, divId: string) {
     this.newMap = new google.maps.Map(document.getElementById(divId), {
       zoom: mapInputs.zoom,
