@@ -1,3 +1,1 @@
-const a = 2000;
-
-console.log(a);
+import { Sorter } from './Sorter';

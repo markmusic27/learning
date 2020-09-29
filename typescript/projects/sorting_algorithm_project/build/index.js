@@ -1,3 +1,2 @@
 "use strict";
-var a = 2000;
-console.log(a);
+Object.defineProperty(exports, "__esModule", { value: true });

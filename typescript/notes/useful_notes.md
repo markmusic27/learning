@@ -80,3 +80,27 @@ Whenever you're working with Node, **you can automate the whole building process
 ```
 
 ---
+
+## Typed Or Operator
+
+When using the or `|` operator in TS, TS will automatically check which properties and methods both types have in common. TS will only permit us use of the common properties and methods. Beyond that, TS will only let us use the
+
+---
+
+## Type Guard
+
+A **type guard** is essentially checking the type of anything in TS.
+
+```ts
+const arrayOfNumbers = [1, 2, 3, 4, 5, 6]
+
+if (arrayOfNumbers instanceOf Array){
+  return "true"
+} else {
+  return "false"
+}
+```
+
+**CODE DECONSTRUCTION:** You use the `instanceOf` to check the type of anything in TS. IN this code snippet, **we're simply checking if `arrayOfNumbers` has an instance of `Array`.**
+
+**NOTE:** If you are checking if the type is of type `number`, `string`, or `boolean`, **use keyword `typeOf` instead of `instanceOf`.**
