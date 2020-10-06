@@ -3,9 +3,12 @@ import 'constants.dart';
 
 int message1 = 0;
 
-void main() {
-  runApp(
-    MaterialApp(
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
           backgroundColor: Color(0xff),
@@ -45,6 +48,6 @@ void main() {
               )
             ],
           )),
-    ),
-  );
+    );
+  }
 }

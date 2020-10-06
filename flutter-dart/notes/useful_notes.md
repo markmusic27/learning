@@ -57,3 +57,21 @@ To add an app icon, there are **three steps**
 5.  Go to the `*yourproject*/android/app/src/main/res` path and replace the `mipmap` files with the ones you just downloaded.
 
 6.  Go to the `*yourproject*/ios/Runner` path and replace the `Assets.xcassets` file with the one you downloaded.
+
+### **Stateless Widget Shortcuts**
+
+A stateless widget is basically a widget with no state. Its a class that returns your code.
+
+The boilerplate looks like this:
+
+```dart
+class Name extends Stateless {
+  @override
+
+  Widget build(
+    return //Code Here
+  )
+}
+```
+
+### **d**
