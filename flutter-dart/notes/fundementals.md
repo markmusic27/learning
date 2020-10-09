@@ -1,4 +1,4 @@
-# 🦟 Useful Notes
+# 🦟 Fundamentals
 
 ## Section #1 | Basics
 

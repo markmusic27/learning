@@ -19,15 +19,7 @@ class MiCard extends StatelessWidget {
               children: [
                 RoundedImage(),
                 SizedBox(height: 10),
-                Text(
-                  "Mark Musis",
-                  style: TextStyle(
-                    color: Color(0xff32292F),
-                    fontSize: 30,
-                    fontFamily: "Product",
-                    fontWeight: FontWeight.w900,
-                  ),
-                ),
+                SuTata(),
                 SizedBox(height: 3),
                 Text(
                   "ENTREPRENEUR",
@@ -51,6 +43,25 @@ class MiCard extends StatelessWidget {
               ],
             ),
           )),
+    );
+  }
+}
+
+class SuTata extends StatelessWidget {
+  const SuTata({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      "Mark Music",
+      style: TextStyle(
+        color: Color(0xff32292F),
+        fontSize: 30,
+        fontFamily: "Product",
+        fontWeight: FontWeight.w900,
+      ),
     );
   }
 }
