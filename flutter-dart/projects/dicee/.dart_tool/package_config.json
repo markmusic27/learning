@@ -137,10 +137,10 @@
       "name": "dicee",
       "rootUri": "../",
       "packageUri": "lib/",
-      "languageVersion": "2.1"
+      "languageVersion": "2.7"
     }
   ],
-  "generated": "2020-10-09T02:19:09.103661Z",
+  "generated": "2020-10-11T03:39:38.780753Z",
   "generator": "pub",
   "generatorVersion": "2.9.2"
 }
