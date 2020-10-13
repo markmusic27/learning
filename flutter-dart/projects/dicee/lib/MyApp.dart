@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
 import 'functionality.dart';
 
 class DicePage extends StatefulWidget {
@@ -16,11 +15,16 @@ class _DicePageState extends State<DicePage> {
         backgroundColor: colorUsed,
         appBar: AppBar(
           backgroundColor: colorUsed,
+          leading: Padding(
+            padding: EdgeInsets.only(left: 10),
+            child: Image.asset("assets/images/rollifyblack.png"),
+          ),
           title: Text(
-            "Dicee",
+            "rollify",
             style: TextStyle(
               color: Colors.black,
-              fontSize: 25,
+              fontSize: 30,
+              fontFamily: "Aero",
               fontWeight: FontWeight.w700,
             ),
           ),
@@ -38,7 +42,8 @@ class _DicePageState extends State<DicePage> {
                         getColor();
                       });
                     },
-                    child: Image.asset("images/dice$leftButtonNumber.png"),
+                    child:
+                        Image.asset("assets/images/dice$leftButtonNumber.png"),
                   ),
                 ),
               ),
@@ -52,7 +57,8 @@ class _DicePageState extends State<DicePage> {
                         getColor();
                       });
                     },
-                    child: Image.asset("images/dice$rightButtonNumber.png"),
+                    child:
+                        Image.asset("assets/images/dice$rightButtonNumber.png"),
                   ),
                 ),
               ),
