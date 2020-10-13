@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'functionality.dart';
 
 class DicePage extends StatefulWidget {
   @override
@@ -7,19 +8,21 @@ class DicePage extends StatefulWidget {
 }
 
 class _DicePageState extends State<DicePage> {
-  int leftButtonNumber = 1;
-  int rightButtonNumber = 1;
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.red,
+        backgroundColor: colorUsed,
         appBar: AppBar(
-          backgroundColor: Colors.red,
+          backgroundColor: colorUsed,
           title: Text(
             "Dicee",
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 25,
+              fontWeight: FontWeight.w700,
+            ),
           ),
         ),
         body: Center(
@@ -31,9 +34,8 @@ class _DicePageState extends State<DicePage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        var rng = Random();
-                        leftButtonNumber = 1 + rng.nextInt(6 - 1);
-                        rightButtonNumber = 1 + rng.nextInt(6 - 1);
+                        getImage();
+                        getColor();
                       });
                     },
                     child: Image.asset("images/dice$leftButtonNumber.png"),
@@ -46,9 +48,8 @@ class _DicePageState extends State<DicePage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        var rng = Random();
-                        rightButtonNumber = 1 + rng.nextInt(6 - 1);
-                        leftButtonNumber = 1 + rng.nextInt(6 - 1);
+                        getImage();
+                        getColor();
                       });
                     },
                     child: Image.asset("images/dice$rightButtonNumber.png"),

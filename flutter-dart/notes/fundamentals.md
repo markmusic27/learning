@@ -130,3 +130,41 @@ Flutter has **two types of widgets**:
 
 1.  Stateless Widgets
 2.  Stateful Widgets
+
+Stateless Widgets are basically the widgets that build the __part of your app's UI that doesn't change__ _(App Bar, Profile Picture, etc)_.
+
+Stateful Widgets are basically the widgets that build the __part of your app's UI that changes__ _( Buttons, Animated Widgets, etc)_.
+
+You can use the `setState()` method to change the state of your app. You can also do this with __State Management__ but more on that later.
+
+```dart
+class ColoredPage extends StatefulWidget {
+  @override
+  _ColoredPageState createState() => _ColoredPageState();
+}
+
+class _ColoredPageState extends State<ColoredPage> {
+  String kColor = Color(0xff000000)
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: GestureDetector(
+          onTap: () {
+            setState((){
+              kColor = Color(0xffffffff)
+            })
+          }
+          child: Container(
+            height: 100,
+            width: 100,
+            color: kColor,
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
