@@ -96,6 +96,6 @@ ListView.seperated(
 
 As we can see, __this also has the `itemBuilder` property__. However, this widget __includes a property called `seperatorBuilder` which also expects an anonymous function that returns a Widget.__
 
-NOTE: Don't forget to add the __`itemCount` property which is just the total ammount of items.__
+NOTE: Don't forget to add the __`itemCount` property which is just the total ammount of items.__ 
 
 
