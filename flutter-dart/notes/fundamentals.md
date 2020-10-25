@@ -168,3 +168,13 @@ class _ColoredPageState extends State<ColoredPage> {
   }
 }
 ```
+
+## Flutter Packages
+
+Flutter Packages are basically all of the packages that you can access.
+
+To access them, go to [pub.dev](https://pub.dev/)
+
+Many of these packages are also uploaded by the __Flutter Team__.
+
+
