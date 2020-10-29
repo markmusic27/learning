@@ -43,7 +43,7 @@ It has a focus in the transfer of energy. It also talks about the adaptations th
 
 For example:
 
-<img src="https://lh3.googleusercontent.com/proxy/zM4xXsAb7btanCxBwMpVQY0EJA1wckdw-gb0c_3M3BehbUStRkjoPxD8yxlPe6rFZk-RMt3piizH01E2hCxcsHGnT3E1YNRqtgHWs8Ug7Rv8ZWnRO2-xTwfoew"></img>
+<img src="https://cdn.mos.cms.futurecdn.net/q6uCg8qNrw29gdWVEEQA5M.jpg"></img>
 
     In the forests of Costa Rica, the Pit Viper snakes have adapted a green pattern in their skin (camouflage) to be able to ambush their pray and catch them off guard.
 
@@ -73,5 +73,47 @@ For example:
 -   Red Tree Frogs
 -   Red Tre Frog
 
+___
 
+## Biomes 
+
+A biome represents its ecosystems.
+
+Within all biomes, there are sub-bioms
+
+__Ex:__ Aquatic - Fresh Water - Salt Water
+
+Within a biome, there are habitats and niches
+
+__Habitats are where the organizms live.__
+-   Physical Place
+-   Reflects the living place of an organizm.
+
+__A nishe is what role that the organizm plays in its environment.__
+-   Fuction or Activity
+-   Reflects its biotic and abiotic association with the environment.
+
+### __This is how both relate:__
+
+<img src="https://i.ibb.co/981pTRd/Screen-Shot-2020-10-29-at-11-36-14-AM.png"></img>
+
+_The habitat directly and indirectly affects the niche._
+
+This is called a __feedback loop.__ _All interconnected._
+
+__NOTE:__ They are both specific to a particular organism.
+
+The niche is determined by the limiting factor.
+
+The limiting factor is any __biotic or abiotic__ factors that __resist the existance of organisms in a specific environment.__
+
+### __Examples of limiting factors:__
+
+-   Ammount of water
+-   Ammount of food
+-   Temperature
+-   Ammount of space
+-   Avaiability of mates
+
+___
 
