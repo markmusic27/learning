@@ -46,7 +46,7 @@ To add an app icon, there are **three steps**
 
 1.  Make sure that you have a **good quality** icon.
 
-2.  Go to the [Icon App Generator](https://appicon.co/) website where you will genertae the icons.
+2.  Go to the [Icon App Generator](https://appicon.co/) website where you will generate the icons.
 
 3.  Once in the site, make sure that select the platforms you're developing for.
 
@@ -178,3 +178,134 @@ To access them, go to [pub.dev](https://pub.dev/)
 Many of these packages are also uploaded by the __Flutter Team__.
 
 
+## `dynamic` Data Type
+
+The `dynamic` data type is __like the any data type in TS.__ Basically, it means that there is no specific data type.
+
+Every time that you see one of these `dynamic` data types, it's always better to stay away and __give a specific type annotation.__
+
+## Escaping Characters
+
+Whenever you're escaping a quotation mark in a string, make sure to use the `\` and not the `/`.
+
+In Dart, like JS and TS, you escape characters with the __backslash__, not the __slash__.
+
+```dart
+String object = "Ice Cream";
+
+String person = "Mark";
+
+void main(){
+  print("$person\'s $object");
+}
+```
+
+## Object Oriented Programming in Flutter & Dart
+
+When using object oriented programming, your essentially working with objects to do everything. Hence, the name object oriented programming.
+
+This is also known as __OOP__.
+
+Within OOP, there are four primary pillars:
+    - Encapsulation
+    - Abstraction
+    - Inheritance
+    - Polymorphism
+
+They each do their own thing but together, create a harmony for developers.
+
+## Abstraction
+
+Abstraction is basically just taking big, complex pieces of code and making them it to smaller, more digestible pieces to make it more abstract.
+
+If you don't, __you create what is commonly refereed in code as a spaghetti monster of code__ which is nearly impossible to fix.
+
+## Encapsulation
+
+Encapsulation is basically just making sure that an engineer can only do certain things with a class or an object. The more methods that you can run with an object, the higher the chances are of actually breaking the code. 
+
+This is why it's __always best to limit the properties or methods you can tap into lower the chances of accidentally breaking your code.__
+
+This will also generally lower the intermingled code in your codebase.
+
+## Making Private Properties and Methods
+
+To make a property private in a class, all you have to do is put an underscore before it:
+
+```dart
+class MakeIceCream {
+  String _privateProperty = "Can't touch this";
+  _privateProperty = "Actually, I can within the Class"
+}
+```
+
+__NOTE:__ You can tap into a private property within the class where it initialized.
+
+## Inheritance
+
+Inheritance basically is __the ability that an class has to inherit from a superclass.__ This will allow you to get very granular within code and build code on top of each other. This is basically the core of Flutter since each Widget (just a class) builds on each other.
+
+The difference between a class and a superclass is that __a class is not a parent class (nothing inherits from it)__. On the other hand, a __superclass is a parent class (one or more classes inherit from it)__
+
+To inherit from another class, use the __`extends` keyword__ to __implement all properties and methods from the parent class.__ If you want to tap into one of these properties or methods from the parent class, use the __`super` keyword.__
+
+```dart
+class Vehicle {
+  final String color;
+  final String definition = "Vehicle";
+  Vehicle({this.color});
+}
+
+class Car extends Vehicle {
+  void drive(){
+    print("wheels turning");
+  }
+}
+```
+
+##  Polymorphism
+
+The exact definition of polymorphism is _"to change shapes"_. However, in development, it __means to change behaviors that a child class might inherit from its parent class.__
+
+In dart, you would use the `@override` keyword to, well, _override_ certain aspects or behaviors from the parent class.
+
+```dart
+class Vehicle {
+  final String color;
+  final String definition = "This is a vehicle";
+
+  void move(){
+    print("vehicle moves");
+  }
+}
+
+class Car extends Vehicle {
+  @override
+
+  void move(){
+    print("wheels turn");
+  }
+}
+```
+
+__CODE DECONSTRUCTION:__ As you can see, the `move()` method is defined once in the `Vehicle` class and then, inherited to the `Car` class. However, the `Car` class is then able to override it because of the `@override` keyword. Even though it's called the same, it could serve a completely different purpose.
+
+However, you can also access/call methods/properties of the super class with the `super` keyword.
+
+```dart
+class Person {
+  String description = "This is a person";
+
+  void talk(String statement){
+    print(statement);
+  }
+}
+
+class Mark extends person {
+  void sayHi(){
+    super.talk("${super.description} called Mark")
+  }
+}
+```
+
+__This is like how you have to tap into properties and methods with the `this` keyword in JS and TS.__
