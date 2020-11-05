@@ -37,6 +37,8 @@ In Flutter development, there is a thing called immutable widgets. Immutable bas
 
 Even though they are both immutable, `final` variables and properties can add their value during run time. `const` cannot. If the value of a const cannot be gotten before run time, then the property must be a `final`.
 
+___
+
 ## Dart Enums
 
 Enums just stand for enumerators; which are basically there to establish the number of something. Basically, instead of having to assign something a number and try to remember that later, you can have different enum types with different names that stand for a number.
@@ -50,6 +52,8 @@ __USING:__
 ```dart
 Name.typea // would stand for 0
 ```
+
+___
 
 ## Customizing Widgets with Themes
 
@@ -113,6 +117,8 @@ __REMEMBER:__ If you have another color that is a property of the _main_ widget,
 
 If you do end up going with the theme route, __MAKE SURE TO DO 100% OF ALL STYLING IN THE THEME.__
 
+___
+
 ## Composition VS. Inheritance
 
 If customizing already made widgets isn't enough, you can always create them from scratch with the most fundamental building blocks of Flutter Widgets.
@@ -128,6 +134,8 @@ __Steps:__
 3.  See what the widget is made up of. Read the documentation on the widgets that make up the widget. 
 4.  Keep on doing this until you feel comfortable with the level of customization.
 5.  Read the documentation on the smallest widget you chose and use it to build out your own widget.
+
+___
 
 ## Routes & Navigation in Flutter
 
@@ -236,3 +244,220 @@ You can also change the value that a key is correlated to by:
 ```dart
 mapName["Key"] = "new value";
 ```
+
+___
+
+## Getting Location Data From Across Platforms
+
+There are two primary ways you can get the location of your user:
+
+1.  You can either use a Dart Package like [this one](https://pub.dev/packages/geolocator).
+2.  You can also use the [GCP Geolocator API](https://developers.google.com/maps/documentation/geolocation/overview)
+
+For Clima, we will be using the first option.
+
+__NOTE:__ If you want to access user's location, you need to explicitly ask for it by adding the following line of code:
+
+### Android 
+folder: `android/app/src/main/AndroidManifest.xml`
+
+```xml
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+```
+
+or
+
+```xml
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+```
+
+### iOS
+folder: `ios/Runner/Info.plist`
+
+```xml
+<key>NSLocationWhenInUsageDescription</key>
+<string>This app needs access to location when open</string>
+```
+
+___
+
+## Dart Futures, Async & Await
+
+In code, there are methods that can take an undetermined amount of to complete. __Dart, like many other languages is asynchronous.__ This means that if you have a function like this: 
+
+```dart
+void aFunction(){
+    // Step 1
+    print("Hello Moon!");
+    // Step 2
+    getData("4K image from NASA");
+    // Step 3
+    print("Hello Jupiter!");
+}
+```
+
+It will run, the first method first, then run `getData()` and finally run step three. However, Dart won't wait until `getData()` is done to run step 3. This means that if you depend on `getData()` to finish for step 3 to work, your essentially screwed. This is called asynchronous programming.
+
+Synchronous programming would wait for `getData()` to finish before it runs step 3. 
+
+__Don't think that asynchronous is bad though.__ It will make your app better in millions of ways and in 99% of the cases, __async is simply better.__ However, in cases like this, where you depend on synchronous programming to make your app work (_ex. HTTP GET/POST requests_), you can use some lines of syntax that are baked into Dart to make it work.
+
+```dart
+void aFunction() async {
+    // Step 1
+    print("Hello Moon!");
+    // Step 2
+    await getData("4K image from NASA");
+    // Step 3
+    print("Hello Jupiter!");
+}
+```
+
+__CODE DECONSTRUCTION:__ Here, we added two keywords, `async` and `await`. `async` essentially tells Dart, "Yo, this next method here will have synchronous bits.". `await`, used before calling the method tells Dart, "Yo, wait until this method finished before going on to the next part."
+
+__NOTE:__ These methods always return Futures since the values are set when the methods end. Until they end, they will be marked as a Future. Since Futures materialize when the method ends, you can tell Dart what will be the type of value the Future will materialize to.
+
+```dart
+Future<String> aFunction() async {
+    // Step 1
+    String data;
+    // Step 2
+    data = await getData("IMPORTANT STRING");
+    // Step 3
+    return data;
+}
+```
+
+___
+
+## Widget Lifecycles
+
+When you refer to the lifecycle of a widget, your referring to the time frame of when it gets built and when it gets destroyed. For stateless widgets, their lifecycle is quite simple since you can't really change it. However, stateful widgets are a different story since there is way more that can be done with them.
+
+When using a stateless widget, pay attention to the `build()` method.
+
+```dart
+class WidgetName extends StatelessWidget {
+    @override
+    Widget build(BuildContext context){
+        return null;
+    }
+}
+```
+
+When using a stateful widget, pay attention to the `build()` method, the `initState()` method, and the `deactivate()` method.
+
+```dart
+void initState() {
+
+}
+
+Widget build(BuildContext context){
+    return null;
+}
+
+void deactivate() {
+
+}
+```
+
+`initState()` is triggered when the state originally gets initialized.
+
+`build()` is triggered when the widget gets built.
+
+`deactivate()` is triggered when the widget gets destroyed.
+
+What is important about this is that you can tap into these different stages of a widget's lifecycle to do certain things at specific times.
+
+__Here is an example:__
+
+```dart
+class MyWidget extends StatefulWidget {
+  MyWidget({Key key}) : super(key: key);
+
+  @override
+  _MyWidgetState createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<MyWidget> {
+  @override
+  void initState() {
+    // Called when stateful widget gets inserted into the file tree.
+    super.initState();
+    print("initState() Called");
+  }
+
+  @override
+  void deactivate() {
+    // Called when stateful widget gets destroyed.
+    super.deactivate();
+    print("deactivate() Called");
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // Called when the widget gets built
+    print("build() Called");
+    return Text("");
+  }
+}
+```
+
+There are __many more of these lifecycle methods__ but __these are the three most common.__
+
+___
+
+## Exception Handling & Null Aware Operators
+
+Whenever there's an error at runtime, the program with throw out an error and it is the programmers job to catch that exception and handle it.
+
+You can do this with the try and catch blocks
+
+```dart
+main() {
+    String myString = "abc";
+
+    try {
+        double myDouble = double.parse(myString);
+        print(myDouble + 10);
+    } catch (e) {
+        print(e);
+    }
+}
+```
+
+__CODE DECONSTRUCTION:__ Here, were telling Dart, "try to do this. If it works, great! If it doesn't, catch that error and tell me what it is". That try is just a block of code that Dart will try and if there is an error, the catch will get it and print it out with the anonymous function `(e){print(e);}`. 
+
+__NOTE:__ `e` stands for `exception`.
+
+The best way to use try and catch is to declare a property but not initialize it. Then try to change its value with the try. If it does work, then it will reassign the value, if it doesn't, then the value will stay as null. Then you can simply check if the value is null with the `??` operator. If it is, use a default value, if it isn't then use the reassigned value.
+
+Here is how it would look in code: 
+
+```dart
+class MyWidget extends StatefulWidget {
+  MyWidget({Key key}) : super(key: key);
+
+  @override
+  _MyWidgetState createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<MyWidget> {
+    String textDisplayed;
+
+    try {
+        textDisplayed = 18;
+    } catch (e) {
+        print(e);
+    }
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(textDisplayed ?? "default value");
+  }
+}
+```
+
+The `Text()` widget will display _"default value"_ since the value of `textDisplayed` is null.
+
+__NOTE:__

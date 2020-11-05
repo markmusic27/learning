@@ -1,0 +1,30 @@
+{
+  "name": "geolocator",
+  "version": "6.0.0+4",
+  "summary": "Geolocation plugin for Flutter.",
+  "description": "Geolocation plugin for Flutter. This plugin provides a cross-platform (iOS, Android) API for generic location (GPS etc.) functions.",
+  "homepage": "http://github.com/baseflow/flutter-geolocator",
+  "license": {
+    "file": "../LICENSE"
+  },
+  "authors": {
+    "Baseflow": "hello@baseflow.com"
+  },
+  "source": {
+    "path": "."
+  },
+  "source_files": "Classes/**/*",
+  "public_header_files": "Classes/**/*.h",
+  "dependencies": {
+    "Flutter": [
+
+    ]
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "pod_target_xcconfig": {
+    "DEFINES_MODULE": "YES",
+    "VALID_ARCHS[sdk=iphonesimulator*]": "x86_64"
+  }
+}

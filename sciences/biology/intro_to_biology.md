@@ -79,18 +79,18 @@ ___
 
 A biome represents its ecosystems.
 
-Within all biomes, there are sub-bioms
+Within all biomes, there are sub-biome
 
 __Ex:__ Aquatic - Fresh Water - Salt Water
 
 Within a biome, there are habitats and niches
 
-__Habitats are where the organizms live.__
+__Habitats are where the organisms live.__
 -   Physical Place
--   Reflects the living place of an organizm.
+-   Reflects the living place of an organism.
 
-__A nishe is what role that the organizm plays in its environment.__
--   Fuction or Activity
+__A niche is what role that the organism plays in its environment.__
+-   Function or Activity
 -   Reflects its biotic and abiotic association with the environment.
 
 ### __This is how both relate:__
@@ -105,15 +105,76 @@ __NOTE:__ They are both specific to a particular organism.
 
 The niche is determined by the limiting factor.
 
-The limiting factor is any __biotic or abiotic__ factors that __resist the existance of organisms in a specific environment.__
+The limiting factor is any __biotic or abiotic__ factors that __resist the existence of organisms in a specific environment.__
 
 ### __Examples of limiting factors:__
 
--   Ammount of water
--   Ammount of food
+-   Amount of water
+-   Amount of food
 -   Temperature
--   Ammount of space
--   Avaiability of mates
+-   Amount of space
+-   Availability of mates
 
 ___
 
+## Types of Adaptations
+
+There are many adaptations. You can break up these adaptations into types:
+
+1.  Structural/Physical
+2.  Behavioral
+    1.  These are innate behaviors that animals are born with.
+3.  Physiological
+    1.  These are things that animals do that the animal doesn't choose to do.
+
+<img src="https://i.ibb.co/cvfLr6v/Screen-Shot-2020-11-04-at-8-17-29-AM.png">
+
+### __Here is the example of a Snail:__
+
+<img src="https://resize.hswstatic.com/w_1024/gif/snail-shell.jpg">
+
+__Structural:__
+-   Shell (_protection_)
+-   Eye stalks (_better vision_)
+-   Muscular foot (_allows it to move_)
+
+__Behavioral:__
+-   Retract into shell (_protection_)
+-   Courtship to attract mates (_better reproduction_)
+-   Hibernation (_survival_)
+
+__Physiological:__
+-   Producing mucus
+-   Can produce sex cells from both genders
+
+### __There are scientific names for these are:__
+
+Structural: _Anatomical_
+
+Behavioral: _Ethological_
+
+Physiological: _Physiological_
+
+### Quick Tip:
+
+Hibernation is in the cold.
+Estivation is in teh heat.
+
+___
+
+## Abiotic Factors
+
+Abiotic means non living:
+-   Water
+-   Light
+-   Wind
+-   Temperature
+-   pH Levels
+-   Salinity
+-   Nutrients
+
+Organisms find a way to use and exploit these abiotic factors for survival.
+
+Many organisms need these abiotic factors to survive. __These are called abiotic factors that promote survival__. Others mak it harder for an organisms survive. __These are called limiting factors.__
+
+Adaptations are changes that organisms evolve to have to be able to cope and survive with their abiotic factors.
