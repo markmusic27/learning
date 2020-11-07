@@ -460,4 +460,231 @@ class _MyWidgetState extends State<MyWidget> {
 
 The `Text()` widget will display _"default value"_ since the value of `textDisplayed` is null.
 
-__NOTE:__
+__NOTE:__ Something else you can do is provide alternate realities with the catch block. This way, your app can serve a specific purpose when the error is caught. For example, if the user is offline, give them a pop up saying: "Your offline, reconnecting..."
+
+__NOTE:__ The new operator we were using, `??`, is called the __Null Aware Operator__ and it basically just checks if the value of the thing being compared has a value of null. If it doesn't it will use the value of the variable. I it does, it will provide an alternative for the value.
+
+You can also throw an exception with the throw block: 
+
+```dart
+void nShouldBeGreaterThan10(n){
+    if (n < 10){
+        throw "n is less than 10, n should always be greater than 10";
+    }
+}
+```
+
+___
+
+## APIs Explained
+
+An __Application Programming Interface__ (_API_) is a set of commands, functions, protocols and objects that programmers can use to __create software__ or __interact with an external system__.
+
+It provides developers with __standard commands__ for performing __common operations__ so they do not have to write the code from scratch.
+
+___
+
+## HTTP calls with Flutter
+
+To make HTTP with Flutter, we need to use a package provided by the Dart team. It is very reliable and it's what everyone uses. 
+
+__Get the package [here](https://pub.dev/packages/http)__
+
+## To install it, follow these steps: 
+
+1. Depend on it
+Add this to your package's pubspec.yaml file:
+
+```yaml
+dependencies:
+  http: ^0.12.2
+```
+
+2. Install it
+You can install packages from the command line:
+
+_with pub:_
+
+`$ pub get`
+
+_with Flutter:_
+
+`$ flutter pub get`
+
+Alternatively, your editor might support pub get or flutter pub get. Check the docs for your editor to learn more.
+
+3. Import it
+Now in your Dart code, you can use:
+
+```dart
+import 'package:http/http.dart';
+```
+
+## Using the package
+
+You can then use the `get()` method that has two properties:
+
+1.  URL that is of type `String`.
+
+That will return a type `Response`.
+
+You can then use the `.body` like `.json` in TS that just turns that instance of `Response` into actual data.
+
+__The code would look like this:__
+
+```dart
+void getData() async {
+    String url = "http://jsonplaceholder.typicode.com/todos/1";
+    Response response = await get(url);
+    print(response.body);
+  }
+```
+
+You can also check the status code of the HTTP request to see what happened. It's always a good idea to do error handling with these codes.
+
+__You can see what they mean in [this website](https://www.restapitutorial.com/httpstatuscodes.html)__
+
+There is a simple cheat sheet you can follow.
+
+__HTTP return codes cheat sheet:__
+
+| Error Message | Meaning |
+| ------------- | ------- |
+|__1**__| Hold On |
+|__2**__| Here You Go |
+|__3**__| Go away |
+|__4**__| You fucked up |
+|__5**__| I fucked up |
+
+__NOTE:__ When working with the `http` package, it is always best to give the package an `as` keyword in the import so you can easily see that the methods we are calling are coming from an package and not from general flutter code.
+
+```dart
+import 'package:http/http.dart' as http;
+```
+
+___
+
+## JSON Parsing & Dynamic Types
+
+__Most API providers are split into two camps:__
+
+-   Either they provide the data as XML (_Extensible Markup Language_)
+-   Or they provide it as JSON (_JavaScript Object Notation_)
+
+Others even give you a choice between both.
+
+Both use a key, value pair. 
+
+### __XML:__
+
+```xml
+<key>value</key>
+```
+
+```json
+{key:value}
+```
+
+To then get the data from the API response, you need to decode it with a JSON Parser. Dart has one of these built in, all you have to do it import it.
+
+```dart
+import "dart:convert";
+```
+
+You can then convert that data with the Json Parser. All you need to do is pass that data into the `jsonDecode()` method and you're set.
+
+```dart
+void getData() async {
+    String url = "http://jsonplaceholder.typicode.com/todos/1";
+    http.Response response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      String data = response.body;
+
+      String userID = jsonDecode(data)["todo"][0]["title"];
+
+      print(userID);
+    } else {
+      print(response.statusCode);
+    }
+  }
+```
+
+__CODE DECONSTRUCTION:__ We can divide that method into steps.
+
+1.  We're tapping into the key _"todo"_ which is a list of data.
+2.  Then, were tapping into the the first index of that list, or index `0`.
+3.  Once in that index of the list, we are tapping into the key _"title"_ to get the title of the data.
+
+The code all together looks something like this:
+
+```dart
+jsonDecode(data)["todo"][0]["title"];
+```
+
+___
+
+## Passing Data to a State Object
+
+Whenever you're passing in data, you would pass it into the constructor. You would then use the widget keyword within the state class of that widget to use it.
+
+__REMEMBER:__ You don't initialize state in their declaration, they are meant to be null at first. You would then update those variables with the value you passed in using the widget keyword.
+
+___
+
+## Text Inputs 
+
+To add a text input field into Flutter, you can use the `TextField()` widget. This has a decoration property which you can input a `InputDecoration()` widget.
+
+Here is an example of a `TextField()` with some decoration:
+
+```dart
+TextField(
+    style: TextStyle(
+        color: Colors.black,
+        fontSize: 16,
+    ),
+    decoration: InputDecoration(
+        filled: true,
+        fillColor: Colors.white,
+        hintText: "Enter City Name",
+        hintStyle: TextStyle(color: Colors.grey),
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20)),
+            borderSide: BorderSide.none,
+        ), // OutlineInputBorder
+    ), // InputDecoration
+), // TextField
+```
+
+Then, you just give that a property of `onChanged` which expects an anonymous function.
+
+```dart
+onChanged: (String value){
+    print(value);
+}
+```
+
+This will get called every time the text is changed.
+
+____
+
+## Passing Back Data with Navigation.
+
+You can actually pass back data through navigation. This is how you would do so:
+
+```dart
+
+// Passing the data:
+Navigator.pop(context, variableYouWantToPass);
+
+// Retrieving the data: 
+onPressed: () async {
+    var output = await Navigation.push(context, MaterialPageRoute(
+           build: (context) => Screen1(),
+       ), // MaterialPageRoute
+    );
+}
+```
+
+__NOTE:__ Since this Data can be passed at any moment, `Navigation.push()` is an asynchronous method and returns a dynamic future.
