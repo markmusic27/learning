@@ -688,3 +688,4 @@ onPressed: () async {
 ```
 
 __NOTE:__ Since this Data can be passed at any moment, `Navigation.push()` is an asynchronous method and returns a dynamic future.
+
