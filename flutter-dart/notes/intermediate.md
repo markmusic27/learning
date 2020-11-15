@@ -665,6 +665,18 @@ onChanged: (String value){
 }
 ```
 
+You can even change if the keyboard type depending on what the text field is for.
+
+```dart
+keyboardType: TextInputType.emailAddress,
+```
+
+You can also make the dots appear when the text field is a password.
+
+```dart
+obscureText: true,
+```
+
 This will get called every time the text is changed.
 
 ____

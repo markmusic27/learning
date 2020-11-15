@@ -1,3 +1,7 @@
+---
+useMath: true
+---
+
 # 🦑 Introduction to Biology & Ecology
 
 ### Table of Content
@@ -79,18 +83,18 @@ ___
 
 A biome represents its ecosystems.
 
-Within all biomes, there are sub-biome
+Within all biomes, there are sub-bioms
 
 __Ex:__ Aquatic - Fresh Water - Salt Water
 
 Within a biome, there are habitats and niches
 
-__Habitats are where the organisms live.__
+__Habitats are where the organizms live.__
 -   Physical Place
--   Reflects the living place of an organism.
+-   Reflects the living place of an organizm.
 
-__A niche is what role that the organism plays in its environment.__
--   Function or Activity
+__A nishe is what role that the organizm plays in its environment.__
+-   Fuction or Activity
 -   Reflects its biotic and abiotic association with the environment.
 
 ### __This is how both relate:__
@@ -105,7 +109,7 @@ __NOTE:__ They are both specific to a particular organism.
 
 The niche is determined by the limiting factor.
 
-The limiting factor is any __biotic or abiotic__ factors that __resist the existence of organisms in a specific environment.__
+The limiting factor is any __biotic or abiotic__ factors that __resist the existance of organisms in a specific environment.__
 
 ### __Examples of limiting factors:__
 
@@ -178,3 +182,94 @@ Organisms find a way to use and exploit these abiotic factors for survival.
 Many organisms need these abiotic factors to survive. __These are called abiotic factors that promote survival__. Others mak it harder for an organisms survive. __These are called limiting factors.__
 
 Adaptations are changes that organisms evolve to have to be able to cope and survive with their abiotic factors.
+
+___
+
+## Relationships between Organisms
+
+When two organisms has a relation ship, they fall into one of five groups.
+
+#### **They are called:**
+
+1.  Parasitism
+2.  Mutualism
+3.  Commensalism
+4.  Predation
+5.  Competition
+
+**Parasitism** is when one organism is harmed and the other is benefited.
+
+**Commensalism** is when one organism benefits and it is neutral for the other one.
+
+**Mutualism** when both organisms benefit.
+
+**Predation** is when one organism eats.
+
+**Competition** is when two or more organisms fight for resources.
+
+___
+
+## Biodiversity
+
+Biodiversity is the variety of life in the world or in a particular habitat or ecosystem.
+
+There are three types of biodiversity:
+
+1.  Ecosystem diversity
+2.  Species diversity
+3.  Genetic diversity
+
+### **Ecosystem Diversity**
+
+The ecosystem diversity is the smallest type of diversity. This is all about the different species in biomes.
+
+**EX:** Rain Forest | _Spider Monkey, Tapir, Jaguar, etc_
+
+### **Species Diversity**
+
+The species diversity is the second largest type of diversity. This is all about the different species in an animals in the species. 
+
+**EX:** Monkey | _Howler Monkey, Spider Monkey, White Face Monkey, etc._
+
+### **Genetic Diversity**
+
+The Genetic diversity is the largest type of diversity. This is all about the differences in genetics in a species.
+
+**EX:** Human | _Asians, Latin Americans, Africans_
+
+**The rule of biodiversity:** The more diversity, the less competition there is for resources.
+
+### **How to tell if two animals are in a species?**
+
+If the animals don't reproduce together, they aren't the same species.
+
+However, they all come from the the same ancestor.
+
+### **Benefits of Biodiversity**
+
+<img src="https://i.ibb.co/vcbDsvW/Screen-Shot-2020-11-10-at-11-45-32-AM.png"> </img>
+
+### **Importance of Biodiversity**
+
+-   Increases Money  For Humans
+    -   Greater genetic diversity withing a crop species = bigger crop yield.
+    -   More spices of fish = More choices and more sales.
+- 
+
+___
+
+## Calculating Biodiversity
+
+When you're calculating biodiversity, you use something called GRNMS.
+
+Scientists will use a sampling technique. They will put a box down and count the biodiversity within the box. This will give them the idea of what's the biodiversity of a certain region.
+
+### **Follow these steps to follow the biodiversity**
+
+1.  Identify all of the species in the area you're researching.
+2.  Count how many of each of each of the species there are.
+3.  Take the total number of species found and divide by total number of individuals found in the entire quadrat.
+
+$$
+  \frac {sf} {iq}
+$$
