@@ -77,6 +77,8 @@ dependencies {
 }
 ```
 
+**NOTE:** Make sure to change your `minSdkVersion` to 21 if it is at 16.
+
 5.  Open your app `build.gradle`
 
 ```
@@ -324,6 +326,150 @@ Widget build(BuildContext context){
 9.  Firebase in Home / Sign In page / Sign Up page
     - Now, all that is left to do is to call `context.read<AuthenticationService>().signIn()` to create the new user.
 
+___
 
+## Firestore CRUD
 
+The first thing you're going to want to do is create your database in [Firebase](https://firebase.google.com/). To do this, follow these steps:
 
+1.  Go to the _Cloud Firestore_ page.
+2.  Click on _Create Database_. 
+    - This will then ask you to select either _production mode_ or _test mode_. The difference is that in test mode, anyone **(doesn't matter if they're authenticated)** can read and write to the database. In _production mode_, only authenticated users can read and write. You can choose either of both. This said, it is recommended to start off with _test mode_.
+
+The next thing you're going to want to do is install the dependencies:
+
+1.  Go to the [pub.dev](https://www.pub.dev) website.
+2.  Look for `firebase core`. Add the dependency to your `pubspec.yaml` file. This is the package you need anytime you want to work with Firebase.
+3.  Now look for `cloud_firestore`. Add the dependency to your `pubspec.yaml` file. This is the package you need to work with Cloud Firestore.
+
+Now, we can start building out the app:
+
+1.  Create a `services` folder.
+2.  Add the `firestoreServices.dart` file.
+3.  Create a class called `FirestoreServices`.
+4.  Create a `FirebaseFirestore` instance anc call it `db`.
+5.  Mark it private with an underscore before it.
+6.  Make a list of The things that you want to with your database.
+7.  If it's CRUD. It would be:
+    1.  Get
+    2.  Create
+    3.  Update
+    4.  Delete
+
+This is how it would look for now:
+
+```dart
+class FirestoreServices {
+    FirebaseFirestore _db = FirebaseFirestore.instance;
+
+    // Get Entity
+
+    // Create
+
+    // Update
+
+    // Delete
+}
+```
+
+Since we are getting a stream of whatever you're getting, we need to model it out.
+
+1.  Create a `models` folder. Here is where you will create all of the models for the data you're retrieving.
+2.  Create your `/*modelName*/.dart` file.
+3.  Create the `/*ModelName*/` class.
+4.  Add all of the properties the data will have.
+5.  Initialize these properties with a constructor.
+6.  Create a `factory`. Anytime that you're working with Firestore, you have your object. To send it to Firestore, you need to convert it into a JSON object. If you want to retrieve it, you need to convert it into a dart object. You need to methods that do all of that for you.
+
+```dart
+class ModelName {
+    final String modelID; // Dummy Data
+    final String modelValue; // Dummy Data
+
+    ModelName({@required this.modelID, this.modelValue});
+
+    // This gets the JSON data and turns it into a dart object.
+
+    factory ModelName.fromJSON(Map<String, dynamic> json){
+        return ModelName(
+            // Note that these are the names of the fields in firestore.
+            modelID: json["modelID"], 
+            modelValue: json["modelValue"],
+        );
+    }
+
+    // This gets the dart object (of the values we initialized before) and turns it into a JSON data.
+
+    Map<String, dynamic> toMap(){
+        "modelID": modelID,
+        "modelValue": modelValue,
+    }
+}
+```
+
+__NOTE:__ This is a default Model. Your model can have all types of properties. However, it should always have some properties and these two methods.
+
+Now we go back the the class we were building before:
+
+1.  Create a method that returns a `Stream` or a `Future`. You can you any of both with Firestore. This will get the data.
+
+```dart
+Stream<ModelName> read(){
+    return _db
+        .collection("collectionName"); // this is the collection in Firestore.
+        // IF YOU WANT TO QUERY SPECIFIC DATA, use the .where("field", operation)
+        .snapshots() // if you're getting a future, use "get()" instead of "snapshots()". "snapshots()" will return QuerySnapshots which you have to map.
+        .map((snapshot) => snapshot.docs.map( // This will now return all of the Document Snapshots in the snapshot.
+            (doc) => ModelName.fromJson(doc.data()) // Now you can use the .data to get the actual JSON data and return an Entry and use the .fromJson and pass in doc.data()
+            // IF YOU ARE RETURNING A LIST, use .toList() to get it into a list.
+        ))
+
+}
+```
+
+2.  Create a method to Create. This will overwrite whatever is in the collection with that.
+
+```dart
+Future<void> create(ModelName modelName) {
+    return _db
+        .collection("collectionName") // this is the collection in Firestore.
+        .doc(modelName.modelNameID) // getting you the document
+        .set(modelName.toMap());
+}
+```
+
+2.  Create a method to Upsert (Create or Update). It will say, "if the record doesn't exist, create it. if it does, update it"
+
+```dart
+Future<void> upsert(ModelName modelName) {
+    var options = SetOptions(merge: true);
+
+    return _db
+        .collection("collectionName") // this is the collection in Firestore.
+        .doc(modelName.modelID) // getting you the document
+        .set(modelName.toMap(), options);
+}
+```
+
+3.  Create a method to Delete. This will delete the model.
+
+```dart
+Future<void> delete(String modelId){
+    return _db
+        .collection("collectionName")
+        .doc(modelId)
+        .delete();
+}
+```
+
+Now that we have these, we can go ahead and create providers for the data we're getting. This is state management only for the data that we are working Firestore to get.
+
+1.  Create a Class called DataNameProvider (_this is the data name and then provider_).
+2.  Add the ChangeNotifier Mixin
+3.  Create a property for all of the data you will be using.
+4.  Make all of these properties private.
+5.  Create getters for all of these.
+6.  Create Setters for the values that can be changed .
+7.  Use notifyListeners() in all of the setters.
+8.  Initialize the firestoreService field.
+9.  Initialize a Uuid property.
