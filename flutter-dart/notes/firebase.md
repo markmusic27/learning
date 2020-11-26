@@ -473,3 +473,159 @@ Now that we have these, we can go ahead and create providers for the data we're 
 7.  Use notifyListeners() in all of the setters.
 8.  Initialize the firestoreService field.
 9.  Initialize a Uuid property.
+10. Create a loadAll method to load all of the values.
+11. Create a save method to save the record.
+12. Create a remove method to delete the record.
+
+```dart
+class EntryProvider with ChangeNotifier {
+    final firestoreService = FirestoreService();
+    DateTime _date;
+    String _entry;
+    String _entryId;
+    var uuid = Uuid();
+
+    // All private variables, we will need a public way to get them.
+
+    DateTime get date => _date;
+    String get entry => _entry;
+    Stream<List<Entry>> get entries => firestoreService.getEntries();
+    
+    // All private variables, we will need a public way to set them to a different value
+
+    set changeDate(DateTime date) {
+        _date = date;
+        notifyListeners();
+        // notifyListeners() will trigger a UI reload
+    }
+
+    set changeEntry(String entry) {
+        _entry = entry;
+        notifyListeners();
+        // notifyListeners() will trigger a UI reload
+    }
+
+    //We might be coming of an existing entry, we need to tell the UI to load the new data.
+
+    void loadAll(Entry entry) {
+        if (entry != null) {
+            _date = DateTime.parse(entry.date);
+            _entry = entry.entry;
+            _entryId = entry.entryId;
+        } else {
+            _date = DateTime.now();
+            _entry = null;
+            _entryId = null;
+        }
+    }
+
+    void saveEntry() {
+        if (entryId == null){
+            // Add entry
+            var newEntry = Entry(
+                date: _date.toIso8601String(),
+                entry: _entry,
+                entryId: uuid.v1(),
+                )
+            
+            firestoreService.setEntry(newEntry);
+        } else {
+            // Update
+            var updatedEntry = Entry(
+                date: _date.toIso8601String(),
+                entry: _entry,
+                entryId: _entryId,
+                )
+            firebaseService.setEntry(updatedEntry);
+        }
+    }
+
+    void removeEntry(String entryId) {
+        firestoreService.deleteEntry(entryId);
+    }
+
+}
+```
+
+Now that we have our provider done, we can implement with the front-end. here are the steps:
+
+1.  Wrap your `MaterialApp` in a `ChangeNotifierProvider`.
+2.  Pass in the `create` property and give it an arrow function that returns the provider you created: `create: (context) => EntryProvider()`
+3.  Create an `Provider.of(context)` instance. in your `initState()`. 
+4.  Give that `Provider.of(context)` the type of provider you created for your data: `Provider.of<EntryProvider>(context)`.
+5.  Pass in `listen` as `false`: `Provider.of<EntryProvider>(context, listen: false)`
+6.  Load with the values with the `.loadValues` method.
+7.  Set values = to to the object passed
+
+```dart
+@override
+void initState() {
+    final entryProvider = Provider.of<EntryProvider>(context, listen: false);
+    if (widget.entry != null) {
+        // Update
+
+        text = widget.entry.entry
+
+        entryProvider.loadAll(widget.entry);
+    } else {
+        // Create
+
+        entryProvider.loadAll(null);
+    }
+    super.initState();
+}
+
+@override
+Widget build(BuildContext context) {
+    final entryProvider = Provider.of<EntryProvider>(context);
+    return Scaffold(
+        body: Column(
+            children: [
+                Text(formatDate(entryProvider.date, [
+                    MM,
+                    " ",
+                    d,
+                    ", ",
+                    yyyy,
+                    ]
+                    )
+                    ),
+                // Use entryProvider.changeDate() to change the date.
+            ]
+        ),
+    );
+}
+```
+
+Now, to create a ListView, use a `StreamBuilder`
+
+```dart
+StreamBuilder<List<Entry>>(
+    stream: entryProvider.entries,
+    builder: (context) {
+        return ListView.builder(
+            itemCount: snapshot.data.length,
+            itemBuilder: (context, index){
+                return ListTile(
+                    Title(
+                        formatDate(DateTime.parse(snapshot.data[index].date), 
+                            [
+                                MM,
+                                " ",
+                                d,
+                                ", ",
+                                yyyy,
+                            ]
+                        )
+                    )
+                    onPressed: () {
+                        Navigator.push(
+                            MaterialPageRoute(builder: (context) => EntryScreen(entry: snapshot.data[index]))
+                        )
+                    }
+                )
+            }
+        )
+    }
+),
+```
