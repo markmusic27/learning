@@ -55,7 +55,44 @@ Here are the different moments and what they mean:
 
 -   __Moment #1__: is the mean, the average.
 -   __Moment #2__: is the variance.
--   __Moment #3__: is skew (__${\gamma}$__)
 
 Thats it!
 
+The third and and fourth moments are a bit more complex:
+
+-   __Moment #3__: is skew (__${\gamma}$__)
+-   __Moment #4__: is kurtosis.
+
+#### __Skew:__
+
+It is essentially how "lopsided" the distribution is.
+
+>If a distribution has a longer tail on the left, it will be skewed to the left and have a negative skew
+
+<img src="https://i.ibb.co/L53fz6x/Screen-Shot-2020-12-18-at-10-58-10-AM.png" height="150" style="border-radius: 10px"/>
+
+__DECONSTRUCTION:__ The grey line is how a normal distribution would look. 
+
+#### __Kurtosis:__
+
+Al that really is is how thick is the tail and how sharp is the peak,compared to a normal distribution.
+
+>Higher peaks have a higher kurtosis.
+
+Basically, it measures how peaked your data is.
+
+### __Moments in Python__
+
+Here is how you would get each of these moments in Python.
+
+The first thing is to import the libraries needed. In this case, `numpy` and `scipy`
+
+```py
+import numpy as np
+import scipy as sp
+```
+
+-   __Moment 1 (Mean):__ `np.mean(data)`
+-   __Moment 2 (Variance):__ `np.var(data)`
+-   __Moment 3 (Skew):__ `sp.skew(data)`
+-   __Moment 4 (Kurtosis):__ `sp.kurtosis(data)`
