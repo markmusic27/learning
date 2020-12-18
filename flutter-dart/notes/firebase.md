@@ -633,3 +633,33 @@ StreamBuilder<List<Entry>>(
 ___
 
 ## Cloud Storage
+
+Cloud storage is one of the most powerful tools for cloud tools since it allows for powerful file management. Here are the steps you need to follow to use it with Flutter / Dart.
+
+Import the following packages:
+
+1.  Image Picker
+2.  Permission Handler
+3.  Firebase Storage
+
+Then create a class called `ImageService`
+
+That needs four methods:
+
+-   Check Permissions
+-   Select Image
+-   Upload Firebase
+
+```dart
+class ImageService {
+
+    Future<void> checkPermissions() async {
+        await Permission.photos.request();
+        Permission.
+    }
+
+    Future<void> selectImage() async {}
+
+    Future<void> uploadImage() async {}
+}
+```
