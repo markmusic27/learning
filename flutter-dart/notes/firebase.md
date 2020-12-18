@@ -646,20 +646,30 @@ Then create a class called `ImageService`
 
 That needs four methods:
 
--   Check Permissions
 -   Select Image
 -   Upload Firebase
 
 ```dart
 class ImageService {
+    final _picker = ImagePicker();
+    final storage = FirebaseStorage.instance;
+    PickedFile pickedFile
 
-    Future<void> checkPermissions() async {
-        await Permission.photos.request();
-        Permission.
+    Future<void> selectImage() async {
+        pickedFile = await _picker.getImage(source: ImageSource.gallery);
+        var file = File(pickedFile.path);
     }
 
-    Future<void> selectImage() async {}
+    Future<String> uploadImage() async {
+        var snapshot = await  _storage
+            .ref()
+            .child("folderName/imageName")
+            .putFile(pickedFile)
+            .onComplete;
 
-    Future<void> uploadImage() async {}
+        String url = await snapshot.ref.getDownloadURL();
+
+        return url;
+    }
 }
 ```
