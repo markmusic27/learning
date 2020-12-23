@@ -4,6 +4,6 @@ For these notes, I decided to go the Pencil/iPad way and take them through a not
 
 <img src="https://i.ibb.co/jb7mwk4/Gradient-Descent-page-001.jpg" />
 <img src="https://i.ibb.co/kXBn7KT/Gradient-Descent-page-002.jpg" />
-<img src="https://i.ibb.co/93m9wfQ/Gradient-Descent-page-003.jpg" />
-<img src="https://i.ibb.co/cNLfxrd/Gradient-Descent-page-004.jpg" />
+<img src="https://i.ibb.co/M5yD8jF/Gradient-Descent-page-003.jpg" />
+<img src="https://i.ibb.co/jLR0HrF/Gradient-Descent-page-004.jpg" />
 <img src="https://i.ibb.co/vjV8DL0/Gradient-Descent-page-005.jpg" />
