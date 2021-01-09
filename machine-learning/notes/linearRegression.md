@@ -38,3 +38,51 @@ It is used for optimizing all types of of data.
 
 It is too big of a concept to cover in these notes but they will be covered in others.
 
+### __Measuring Success of the Line__
+
+Measuring the success of the line (how well does the line fit the data) can be done easily by using the $R^2$ value. This value will always be between the intervals of 0 - 1. The higher the value, the better. 
+
+This is the fraction of the total variation in y that is captured by your model. To compute this value, all you do is $1$ minus the sum of the squared errors over the sum of the squared variation from the mean.
+
+Essentially, an $R^2$ value of 0 means that 0% of your data gets captured with the line and an $R^2$ value of 1 means that 100% of your data gets captured in your line.
+
+### __NOTE:__ 
+There are many types of regressions; linear regression being one of them. You can try out many types of regression and then use the $R^2$ value of each to see which regression model is the best fit.
+
+### __Using it in Python__
+
+We will use the `scipy` package for this.
+
+```py
+from scipy import stats
+
+stats.linregress(x, y)
+```
+
+All you need to do is pass in those to values.
+
+That will give you back everything that you need (like the r value).
+
+We can then square that value to find the $R^2$.
+
+```py
+print(r_value ** 2)
+```
+
+We can also display that line by using the `matplotlib` library.
+
+
+```py
+# That is just y = mx + b
+
+def predict(x):
+    return slope * x + intercept
+```
+
+```py
+import matplotlib as plt
+
+plt.scatter(x, y)
+plt.plot(x, predict(x), c="r")
+plt.show()
+```
